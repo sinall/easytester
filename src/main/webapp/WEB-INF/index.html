@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+    <h1>Easy Test</h1>
+
+    <form>
+        <div class="form-group">
+            <label>System</label>
+            <select class="form-control">
+                <option>RECAWS</option>
+                <option>Retail Charging</option>
+                <option>MTSMS</option>
+                <option>Premium SMS</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>User</label>
+            <select class="form-control">
+                <option>Prepaid</option>
+                <option>Prepaid mastered by Orpheus</option>
+                <option>Postpaid</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Request</label>
+            <textarea class="form-control payload">
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthoriseAndChargeRequest>
+    <transaction_id>20150528-161606178</transaction_id>
+    <ContentProvider>MIA Pty Ltd</ContentProvider>
+    <Msisdn>61411101001</Msisdn>
+    <MerchantModel>Reseller</MerchantModel>
+    <TaxClass>G</TaxClass>
+    <CategoryName>TSDPCON</CategoryName>
+    <MerchantID>R1061</MerchantID>
+    <ProductName>Gameloft</ProductName>
+    <BillingDescription>testing by Rui</BillingDescription>
+    <RetailChargeAmount>6.99</RetailChargeAmount>
+    <ContentId>51</ContentId>
+    <UtcDateAndTime>
+        <DayOfWeek>4</DayOfWeek>
+        <DayOfMonth>28</DayOfMonth>
+        <Month>5</Month>
+        <Year>2015</Year>
+        <Hour>16</Hour>
+        <Minute>16</Minute>
+        <Second>6</Second>
+    </UtcDateAndTime>
+</AuthoriseAndChargeRequest>
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label>Response</label>
+            <textarea class="form-control payload response">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Clear</button>
+            <button class="btn btn-primary send">Send</button>
+        </div>
+    </form>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".send").click(function () {
+            $(".response").text(
+                    "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+                    + "<AuthoriseAndChargeResponse>\n"
+                    + "    <transaction_id>35362d6e-4b56-4b6f-9709-2e5915ee10b7</transaction_id>\n"
+                    + "    <Status>\n"
+                    + "    <Code>6</Code>\n"
+                    + "    <Description />\n"
+                    + "    </Status>\n"
+                    + "</AuthoriseAndChargeResponse>\n"
+            );
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
